@@ -25,6 +25,35 @@ source .venv/agentic_paper_review/bin/activate
 pip install -r requirements.txt
 ```
 
+## Configure the environment variables
+In order to run this code, you need to configure some environment variables.
+Run this command to create a `.env` file.
+
+```bash
+cp .env.example .env
+```
+
+You have two options for using Gemini.
+
+### 1. Gemini - Google AI Studio
+1. Get an API key from [Google AI Studio](https://aistudio.google.com/apikey).
+2. Set these environment variables in `.env`.
+
+```bash
+GOOGLE_API_KEY=<your-api-key>
+GOOGLE_GENAI_USE_VERTEXAI=FALSE
+```
+
+### 2. Gemini - Google Cloud Vertex AI
+1. Create a Google Cloud project, enable Vertex AI API and authenticate on gcloud cli ([instructions](https://google.github.io/adk-docs/get-started/quickstart/#gemini---google-cloud-vertex-ai)).
+2. Set these env variables in `.env`
+
+```bash
+GOOGLE_GENAI_USE_VERTEXAI=TRUE
+GOOGLE_CLOUD_PROJECT=<your-project-id>
+GOOGLE_CLOUD_LOCATION=<your-location>
+```
+
 ## Starting ADK Web UI
 1. Start the ADK Web UI with the following command. The URL of ADK Web UI will be printed by the command.  
 
@@ -32,10 +61,10 @@ pip install -r requirements.txt
 adk web agents/
 ```
 
-P.s. If you are using Google Cloud Shell, click in the *Web Preview* button at top right of Cloud Shell and click in *Change Port* if needed (e.g. 8000) and then click in *Preview on port 8000*.  
+*Note*: If you are using Google Cloud Shell, click in the *Web Preview* button at top right of Cloud Shell and click in *Change Port* if needed (e.g. 8000) and then click in *Preview on port 8000*.  
 
 2. When the browser loads, the ADK Web UI webapp will be presented.  
-3. Select in the top-left of the webapp one of the available agents: `single_reviewer`, `review_commitee`.  
+3. Select in the top-left of the webapp one of the available agents: `single_reviewer` or `review_commitee`.  
 4. On the right panel, type *I would like to submit this paper to KDD*, click in the attachment button to attach a paper PDF and press enter to  submit. After some seconds/minutes, the reviews and meta-review will be generated.
 ![image](images/single_reviewer_01.png)
 *Note*: If the agent answer is not shown in the chat panel, select the `State` tab in the top-left, and you will be able to see the answer under the `review` state (`output_key` set for the agent). 
