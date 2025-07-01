@@ -12,7 +12,7 @@ This is the workflow:
 2. Each reviewer agent, configured to have a different profile/emphasis, perform an independent review of the paper in parallel.
 3. The meta-reviewer agent reads all the reviews, summarizes the major strengths / weaknesses of the paper and provides the final decision on acceptance/rejection.
 
-The full description of this project can be found in this blog post.
+The full description of this project can be found in this [blog post](https://gspmoreira.medium.com/building-an-agentic-system-with-adk-and-gemini-to-simulate-a-paper-review-committee-eabad29f6172).
 
 ## Installing
 ```bash
