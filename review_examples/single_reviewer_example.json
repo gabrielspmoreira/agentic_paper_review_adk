@@ -1,0 +1,53 @@
+{
+    "reviewer_persona": "An academic reviewer for a conference",
+    "scores": {
+      "relevancy": 5,
+      "originality": 4,
+      "technical_soundness": 4,
+      "presentation_quality": 4,
+      "impact": 5,
+      "citations_adequacy": 4,
+      "reproducibility": 3,
+      "recommendation": "strong accept"
+    },
+    "review": {
+      "summary": "This paper introduces NV-Retriever, a novel approach to improving text embedding models through effective hard-negative mining. The core contribution is a family of \"positive-aware\" mining methods, specifically TopK-MarginPos and TopK-PercPos, which leverage the positive relevance score to filter out false negatives and stabilize contrastive learning. The authors present an extensive ablation study on various hard-negative mining configurations, teacher models, and ensembling strategies. A key highlight is the demonstration of these methods at scale, leading to the NV-Retriever-v1 model achieving state-of-the-art results on the MTEB Retrieval benchmark. The paper also includes an insightful qualitative analysis using an LLM-as-a-judge to quantify false negative reduction.",
+      "target_conference": "KDD",
+      "suggested_conferences": "SIGIR, WSDM, EMNLP, ACL, NeurIPS, ICML",
+      "strenghts": [
+        "The paper introduces a novel and effective family of \"positive-aware\" hard-negative mining methods (TopK-MarginPos and TopK-PercPos) that significantly improve text embedding models by addressing the critical challenge of false negatives in contrastive learning.",
+        "A comprehensive and well-structured ablation study is presented, exploring the impact of different teacher models, ensembling strategies, and various configurations of mining methods. This thorough experimentation provides valuable insights into the hard-negative mining landscape.",
+        "The practical efficacy of the proposed methods is convincingly demonstrated by the NV-Retriever-v1 model achieving state-of-the-art performance and ranking 1st on the MTEB Retrieval leaderboard at the time of its publication.",
+        "The qualitative analysis using an LLM-as-a-judge to quantify false negative removal is a strong point, providing intuitive evidence of the methods' effectiveness.",
+        "The paper clearly articulates the importance of hard-negative mining for efficient and effective fine-tuning of embedding models, an area often underexplored in previous SOTA model papers."
+      ],
+      "weaknesses": [
+        "The reproducibility of the work could be further enhanced by providing publicly available code or detailed training scripts. While hyperparameters and datasets are listed, direct access to the implementation would be beneficial for the research community.",
+        "The computational cost associated with training large Mistral-based models and the hard-negative mining process itself is substantial, which might pose a barrier for researchers with limited resources to replicate or extend this work at scale.",
+        "While the ablation study is extensive, a more fine-grained sensitivity analysis of the proposed methods' hyperparameters (e.g., margin and percentage values) could offer deeper insights into their optimal selection without exhaustive search.",
+        "The theoretical underpinnings of why the \"positive-aware\" methods perform so well, particularly the behavior of the loss landscape with reduced false negatives, could be explored in more depth beyond empirical observations."
+      ],
+      "detailed_comments": [
+        "The distinction between TopK-MarginPos and TopK-PercPos from existing methods like TopK-Abs and TopK-shifted-N is clear and the empirical results convincingly demonstrate their superiority in filtering false negatives.",
+        "The finding that \"Intra-sample ensembling (no-dedup)\" performed best (Table 2) is intriguing and warrants further discussion on why keeping duplicate hard-negatives might increase their importance in the cross-entropy loss, potentially due to models agreeing on the 'most important' negatives.",
+        "The paper effectively highlights how the choice of teacher model significantly impacts the quality of hard-negatives, and consequently, the performance of the fine-tuned embedding model (Table 1). This is a crucial practical takeaway.",
+        "The use of LLM-as-a-judge (Llama 3.1 70b instruct) for false negative classification is a novel and effective way to qualitatively assess the impact of different mining strategies, providing compelling visual evidence (Figure 3) to support the claims.",
+        "The scalability demonstration with NV-Retriever-v1 (Section 4.4 and Table 5) on the full MTEB Retrieval benchmark solidifies the practical relevance and impact of the proposed mining techniques for building state-of-the-art models.",
+        "The discussion on how positive-aware mining leads to better score separation and limits cross-entropy loss (Figure 4) provides good intuition on the mechanism behind the performance improvements."
+      ],
+      "suggestions": [
+        "To significantly improve reproducibility and accelerate adoption, the authors are strongly encouraged to open-source the code for their positive-aware mining methods and the NV-Retriever-v1 training pipeline.",
+        "Consider including a small-scale, qualitative case study that showcases specific examples of false negatives that existing methods might retain but the proposed positive-aware methods successfully filter out. This would further illustrate the mechanisms at play.",
+        "Given the mention of preliminary experiments with multimodal embeddings, it would be valuable to either include these preliminary results or elaborate on the potential broader applicability of the positive-aware mining methods beyond text, perhaps with a more detailed roadmap for future work in this area.",
+        "While computational cost is inherent to large-scale training, the authors could provide more practical guidance or heuristics for practitioners on how to choose appropriate margins/percentages for their specific datasets, rather than relying solely on exhaustive grid search."
+      ],
+      "typos_grammar_errors": [
+        "Page 1, Abstract: \"placed 1st when it was published to the MTEB Retrieval on July, 2024.\" - Consider rephrasing to \"placed 1st on the MTEB Retrieval leaderboard when it was published on July, 2024.\" for better flow.",
+        "Page 2, Section 2.2: \"Contrastive Learning (CL) requires triples of query, positive passage and negative passages.\" - Add a comma: \"query, positive passage, and negative passages.\"",
+        "Page 3, Section 3.1: \"regardless the positive passage relevance.\" - Should be \"regardless of the positive passage relevance.\"",
+        "Page 4, Section 3.3.1: \"fine-tuned² with constrastive learning\" - Typo: \"contrastive\".",
+        "Page 7, Section 4.4: \"placed 1st on the MTEB Retrieval leaderboard leaderboard\" - \"leaderboard\" is repeated.",
+        "Page 10, Appendix B.1: \"Mistral-7b model into an encoder model.\" - Consistent capitalization \"Mistral-7B\" as used elsewhere."
+      ]
+    }
+  }

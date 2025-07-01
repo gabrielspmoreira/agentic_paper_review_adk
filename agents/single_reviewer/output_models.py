@@ -2,8 +2,6 @@ from typing import List, Literal
 from pydantic import BaseModel, Field
 from enum import Enum
 
-from google.adk.agents import LlmAgent, ParallelAgent, SequentialAgent
-
 class RecommendationEnum(str, Enum):
     strong_reject = "strong reject"
     weak_reject = "weak reject"
