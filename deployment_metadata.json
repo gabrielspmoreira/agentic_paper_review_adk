@@ -3,7 +3,7 @@
   "deployment_target": "agent_runtime",
   "is_a2a": false,
   "language": "python",
-  "agent_directory": "app",
-  "app_name": "app",
-  "deployment_timestamp": "2026-11-18T19:20:37.819639+00:00"
+  "agent_directory": "agents/single_reviewer",
+  "app_name": "single_reviewer",
+  "deployment_timestamp": "2026-11-18T22:43:28.925480+00:00"
 }

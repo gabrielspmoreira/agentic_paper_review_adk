@@ -1,13 +1,13 @@
 name: agentic-paper-review
 acli_version: 1.14.0
-agent_directory: app
+agent_directory: agents/single_reviewer
 region: us-east1
 base_template: adk_python
 language: python
 framework: google-adk
 create_params:
   root_agent_name: academic_reviewer
-  app_name: app
+  app_name: single_reviewer
   deployment_target: agent_runtime
   session_type: agent_platform_sessions
   #session_type: in_memory

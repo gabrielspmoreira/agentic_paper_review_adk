@@ -17,3 +17,11 @@
 # Files `scaffold enhance` moved aside from a repo it adopted, which can include
 # the old .env.
 /.agents-cli-original/
+
+# Local-only experimental agents and sample assets (not packaged on deploy)
+/agents/review_commitee/
+/paper/
+/review_examples/
+/images/
+
+.adk/

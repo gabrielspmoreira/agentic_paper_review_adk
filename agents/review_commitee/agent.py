@@ -30,7 +30,7 @@ def create_reviewer_agent(persona_prompt, output_key):
     """
 
     return LlmAgent(
-            name="ReviewerAgent",
+            name=f"ReviewerAgent_{output_key}",
             description="An academic reviewer for a conference",
             instruction=reviewer_prompt_template,
             model=MODEL,

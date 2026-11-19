@@ -11,7 +11,7 @@ logging.basicConfig(format="[%(levelname)s]: %(message)s", level=logging.INFO)
 load_dotenv()
 
 MODEL = "gemini-3.8-flash"
-OUTPUT_JSON = True
+OUTPUT_JSON = False
 
 def create_reviewer_agent() -> LlmAgent:
     """Constructs the reviewer agent."""
@@ -38,3 +38,8 @@ def create_reviewer_agent() -> LlmAgent:
     return reviewer_agent
 
 root_agent = create_reviewer_agent()
+
+from google.adk.apps import App
+
+app = App(root_agent=root_agent, name="single_reviewer")
+
