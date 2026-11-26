@@ -11,7 +11,7 @@ logging.basicConfig(format="[%(levelname)s]: %(message)s", level=logging.INFO)
 load_dotenv()
 
 MODEL = "gemini-3.8-flash"
-OUTPUT_JSON = False
+OUTPUT_JSON = True
 
 def create_reviewer_agent() -> LlmAgent:
     """Constructs the reviewer agent."""
