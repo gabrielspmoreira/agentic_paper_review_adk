@@ -19,10 +19,8 @@ The full description of this project can be found in this [blog post](https://gs
 # Clone the repo
 git clone https://github.com/gabrielspmoreira/agentic_paper_review_adk.git
 cd agentic_paper_review_adk/
-# Creating a virtual environment and install the dependencies
-python3 -m venv .venv/agentic_paper_review
-source .venv/agentic_paper_review/bin/activate
-pip install -r requirements.txt
+# Creates .venv if it does not exist and install dependencies from uv.lock / pyproject.toml
+uv sync
 ```
 
 ## Configure the environment variables
